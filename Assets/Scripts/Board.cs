@@ -6,6 +6,7 @@ public class Board : MonoBehaviour
 {
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
+    public ParticleSystem particleEffect; 
 
     public TetrominoData[] tetrominoes;
     public Vector2Int boardSize = new Vector2Int(10, 20);
@@ -108,6 +109,7 @@ public class Board : MonoBehaviour
             // Only advance to the next row if the current is not cleared
             // because the tiles above will fall down when a row is cleared
             if (IsLineFull(row)) {
+                particleEffect.Play();
                 LineClear(row);
             } else {
                 row++;
